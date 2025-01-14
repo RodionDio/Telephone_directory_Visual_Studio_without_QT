@@ -1,9 +1,9 @@
 #include <iostream>
-#include <regex>  // Подключение библиотеки для регулярных выражений
+#include <regex>  // ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГЁ Г¤Г«Гї Г°ГҐГЈГіГ«ГїГ°Г­Г»Гµ ГўГ»Г°Г Г¦ГҐГ­ГЁГ©
 #include "Telephone_directory.hpp"
 using namespace std;
 
-// Функция для очистки незначимых пробелов по краям строки
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г®Г·ГЁГ±ГІГЄГЁ Г­ГҐГ§Г­Г Г·ГЁГ¬Г»Гµ ГЇГ°Г®ГЎГҐГ«Г®Гў ГЇГ® ГЄГ°Г ГїГ¬ Г±ГІГ°Г®ГЄГЁ
 string trim(const string& str) {
     size_t first = str.find_first_not_of(" ");
     if (first == string::npos) return "";
@@ -11,21 +11,21 @@ string trim(const string& str) {
     return str.substr(first, last - first + 1);
 }
 
-// Проверка на корректность имени, фамилии и отчества
+// ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГј ГЁГ¬ГҐГ­ГЁ, ГґГ Г¬ГЁГ«ГЁГЁ ГЁ Г®ГІГ·ГҐГ±ГІГўГ 
 bool is_valid_name(const string& name) {
-    // Разрешены буквы, цифры, дефис и пробел, но имя должно начинаться с буквы и не может начинаться или заканчиваться дефисом
-    return regex_match(name, regex("^[a-zA-ZА-Яа-яЁё][a-zA-ZА-Яа-яЁё0-9 -]*[a-zA-ZА-Яа-яЁё0-9]$"));
+    // ГђГ Г§Г°ГҐГёГҐГ­Г» ГЎГіГЄГўГ», Г¶ГЁГґГ°Г», Г¤ГҐГґГЁГ± ГЁ ГЇГ°Г®ГЎГҐГ«, Г­Г® ГЁГ¬Гї Г¤Г®Г«Г¦Г­Г® Г­Г Г·ГЁГ­Г ГІГјГ±Гї Г± ГЎГіГЄГўГ» ГЁ Г­ГҐ Г¬Г®Г¦ГҐГІ Г­Г Г·ГЁГ­Г ГІГјГ±Гї ГЁГ«ГЁ Г§Г ГЄГ Г­Г·ГЁГўГ ГІГјГ±Гї Г¤ГҐГґГЁГ±Г®Г¬
+    return regex_match(name, regex("^[a-zA-ZГЂ-ГџГ -ГїВЁВё][a-zA-ZГЂ-ГџГ -ГїВЁВё0-9 -]*[a-zA-ZГЂ-ГџГ -ГїВЁВё0-9]$"));
 }
 
-// Проверка на корректность телефона
+// ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГј ГІГҐГ«ГҐГґГ®Г­Г 
 bool is_valid_phone(const string& phone) {
-    // Разрешенные форматы телефонов с/без +7, с/без скобок, с/без дефисов
+    // ГђГ Г§Г°ГҐГёГҐГ­Г­Г»ГҐ ГґГ®Г°Г¬Г ГІГ» ГІГҐГ«ГҐГґГ®Г­Г®Гў Г±/ГЎГҐГ§ +7, Г±/ГЎГҐГ§ Г±ГЄГ®ГЎГ®ГЄ, Г±/ГЎГҐГ§ Г¤ГҐГґГЁГ±Г®Гў
     return regex_match(phone, regex("^(\\+7|8)?(\\(\\d{3}\\)|\\d{3})\\d{3}[-]?\\d{2}[-]?\\d{2}$"));
 }
 
-// Проверка на корректность электронной почты
+// ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГј ГЅГ«ГҐГЄГІГ°Г®Г­Г­Г®Г© ГЇГ®Г·ГІГ»
 bool is_valid_email(const string& email) {
-    // Удаление лишних пробелов и проверка формата email
+    // Г“Г¤Г Г«ГҐГ­ГЁГҐ Г«ГЁГёГ­ГЁГµ ГЇГ°Г®ГЎГҐГ«Г®Гў ГЁ ГЇГ°Г®ГўГҐГ°ГЄГ  ГґГ®Г°Г¬Г ГІГ  email
     string trimmed_email = trim(email);
     return regex_match(trimmed_email, regex("^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"));
 }
@@ -40,7 +40,7 @@ int main() {
     string filename = "phonedirectory.txt";
     while (a != 9) {
         switch (a) {
-        case 1: { // Добавление контакта 
+        case 1: { // Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЄГ®Г­ГІГ ГЄГІГ  
             cout << "Enter contact name:" << endl;
             string first_name;
             cin >> first_name;
@@ -83,14 +83,14 @@ int main() {
             cin >> adress;
             adress = trim(adress);
 
-            // Новый ввод для дня рождения
+            // ГЌГ®ГўГ»Г© ГўГўГ®Г¤ Г¤Г«Гї Г¤Г­Гї Г°Г®Г¦Г¤ГҐГ­ГЁГї
             cout << "Enter the contact's birthday (DD-MM-YYYY):" << endl;
             string birthday;
             cin >> birthday;
             birthday = trim(birthday);
 
 
-            // Новый ввод для email
+            // ГЌГ®ГўГ»Г© ГўГўГ®Г¤ Г¤Г«Гї email
             cout << "Enter the contact's email:" << endl;
             string email;
             cin >> email;
@@ -100,10 +100,10 @@ int main() {
                 break;
             }
 
-            tel_book.Add(first_name, second_name, "", number, adress, birthday, email); // Вставка нового контакта 
+            tel_book.Add(first_name, second_name, third_name, number, adress, birthday, email); // Г‚Г±ГІГ ГўГЄГ  Г­Г®ГўГ®ГЈГ® ГЄГ®Г­ГІГ ГЄГІГ  
             break;
         }
-        case 2: { // Удаление контакта
+        case 2: { // Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЄГ®Г­ГІГ ГЄГІГ 
             cout << "Enter the phone number of the contact you want to remove from your phone book.:" << endl;
             string number;
             cin >> number;
@@ -116,11 +116,11 @@ int main() {
             cout << "Contact deleted" << endl;
             break;
         }
-        case 3: { // Печать всех контактов
+        case 3: { // ГЏГҐГ·Г ГІГј ГўГ±ГҐГµ ГЄГ®Г­ГІГ ГЄГІГ®Гў
             tel_book.Print_all();
             break;
         }
-        case 4: { // Поиск контакта по фамилии
+        case 4: { // ГЏГ®ГЁГ±ГЄ ГЄГ®Г­ГІГ ГЄГІГ  ГЇГ® ГґГ Г¬ГЁГ«ГЁГЁ
             cout << "Enter contact's last name: " << endl;
             string second_name;
             cin >> second_name;
@@ -133,7 +133,7 @@ int main() {
             break;
         }
         
-        case 5: { // Обновление контакта 
+        case 5: { // ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ ГЄГ®Г­ГІГ ГЄГІГ  
             cout << "Enter the last name of the contact you want to change:" << endl;
             string second_name;
             cin >> second_name;
@@ -189,20 +189,20 @@ int main() {
                 break;
             }
 
-            tel_book.Edit_contact(first_name, second_name, "", number, address, birthday, email);
+            tel_book.Edit_contact(first_name, second_name, third_name, number, address, birthday, email);
             break;
         }
-        case 6: { // Очистка телефонной 
+        case 6: { // ГЋГ·ГЁГ±ГІГЄГ  ГІГҐГ«ГҐГґГ®Г­Г­Г®Г© 
             tel_book.Clear();
             cout << "Telephone directory is clear." << endl;
             break;
         }
         case 7: { 
-            // Сохранение в файл
+            // Г‘Г®ГµГ°Г Г­ГҐГ­ГЁГҐ Гў ГґГ Г©Г«
             tel_book.SaveToFile(filename);
             break; }
         case 8: { 
-            // Загрузка из файла
+            // Г‡Г ГЈГ°ГіГ§ГЄГ  ГЁГ§ ГґГ Г©Г«Г 
             tel_book.LoadFromFile(filename); 
             break; }
         default:
